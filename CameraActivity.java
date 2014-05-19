@@ -145,9 +145,44 @@ public class CameraActivity extends Activity implements CvCameraViewListener2, O
 
 	public boolean onTouch(View v, MotionEvent event) {
 		String imagePath = takeScreen();
+		
+		/*Sudoku test 1*/
+		int[][] tempMat =  {{0,4,0,0,0,2,0,1,9},
+							{0,0,0,3,5,1,0,8,6},
+							{3,1,0,0,9,4,7,0,0},
+							{0,9,4,0,0,0,0,0,7},
+							{0,0,0,0,0,0,0,0,0},
+							{2,0,0,0,0,0,8,9,0},
+							{0,0,9,5,2,0,0,4,1},
+							{4,2,0,1,6,9,0,0,0},
+							{1,6,0,8,0,0,0,7,0}};
+		
+		/*Sudoku test 2*/
+		int[][] tempMat2 =  {{5,3,0,0,7,0,0,0,0},
+							{6,0,0,1,9,5,0,0,0},
+							{0,9,8,0,0,0,0,6,0},
+							{8,0,0,0,6,0,0,0,3},
+							{4,0,0,8,0,3,0,0,1},
+							{7,0,0,0,2,0,0,0,6},
+							{0,6,0,0,0,0,2,8,0},
+							{0,0,0,4,1,9,0,0,5},
+							{0,0,0,0,8,0,0,7,9}};
+		
 		toasted("Analysis in progress ...");
-		//sudokuResult=papaPart(bideauPart(imagePath)); //Tous les calculs
-		sudokuResult=Resolution.Retour_Resolution(Grid.run(imagePath));
+		
+
+		
+		
+
+		
+		/*Test 1*/
+		//sudokuResult=Resolution.Retour_Resolution(tempMat);
+		
+		/*Test 2 */
+		sudokuResult=Resolution.Retour_Resolution(tempMat2);
+		
+		//sudokuResult=Resolution.Retour_Resolution(Grid.run(imagePath));
+		
 		showResult = !showResult; //show Sudoku Grid
 		draw=false; //Hide grid
 		return false;
@@ -168,7 +203,7 @@ public class CameraActivity extends Activity implements CvCameraViewListener2, O
 
 		for(int j=0;j<9;j++){
 			for(int i=0;i<9;i++){
-				myMat=drawNumber(myMat,Integer.toString(sudokuResult[i][j]),i,j);
+				myMat=drawNumber(myMat,Integer.toString(sudokuResult[j][i]),i,j);
 			}
 		}
 
@@ -285,18 +320,4 @@ public class CameraActivity extends Activity implements CvCameraViewListener2, O
 		Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
 	}
 
-	/**
-	 * Call Bideau part.
-	 * 
-	 * @param imagePath 
-	 * 				Path of an image.
-	 * 
-	 * @return Matrix with all the sudoku's numbers.
-	 * 
-	 */
-	private int[][] bideauPart(String imagePath){
-		//----Bideau part
-		int[][] Matrice = new int[9][9];
-		return Matrice;
-	}
 }
