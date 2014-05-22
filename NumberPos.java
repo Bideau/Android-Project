@@ -83,8 +83,5 @@ public class NumberPos
 	}
 
 
-	// various getter methods (not shown) ... 
-	// : 
-
 } // end of NumberPos class 
 
